@@ -21,4 +21,26 @@ class Fundraising extends Model
         'is_active',
         'target_amount',
     ];
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+
+    public function fundraiser(){
+        return $this->belongsTo(Fundraiser::class);
+    }
+
+    public function donaturs(){
+        return $this->belongsTo(Donatur::class)->where('is_paid',1);
+    }
+
+    public function totalReachedAMount()
+    {
+        return $this->donaturs()->sum('total_amount');
+    }
+
+    public function withdrawals()
+    {
+        return $this->hasMany(FundraisingWithdrawal::class);
+    }
 }

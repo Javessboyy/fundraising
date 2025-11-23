@@ -22,4 +22,12 @@ class FundraisingWithdrawal extends Model
         'bank_name',
         'bank_account_number',
     ];
+
+    public function fundraiser(){
+        return $this->belongsTo(Fundraiser::class);
+    }
+
+    public function fundrasing(){
+        return $this->belongsTo(Fundraising::class);
+    }
 }
