@@ -31,7 +31,7 @@ class Fundraising extends Model
     }
 
     public function donaturs(){
-        return $this->belongsTo(Donatur::class)->where('is_paid',1);
+        return $this->hasMany(Donatur::class)->where('is_paid',1);
     }
 
     public function totalReachedAMount()
